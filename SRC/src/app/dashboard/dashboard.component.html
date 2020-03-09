@@ -1,0 +1,66 @@
+<main class="add-team-main">
+    <h2 *ngIf="counterTeam !== 8" class="add-team-title">Adicionar time {{ counterTeam + 1 }} de {{ totalTeams }}</h2>
+    <h2 *ngIf="counterTeam === 8" class="add-team-title">Lista preenchida! :)</h2>
+
+    <form class="add-team-form" [formGroup]="form">
+        <label class="label -name-team">
+            <input #name
+                class="input -name-team"
+                formControlName="teamName"
+                type="text"
+                placeholder="Adicione o nome do time"
+                [value]="teamName">
+        </label>
+
+
+        <div class="container-sliders">
+            <label class="slider">
+                <p class="value">Força:  {{ force }}</p>
+                <input class="input -slider" formControlName="force" type="range" min="0" max="100" [value]="force">
+                <input type="range" min="0" max="100" class="bar" [style.width.%]="force" />
+            </label>
+            <label class="slider">
+                <p class="value">Ataque:  {{ attack }}</p>
+                <input class="input -slider" formControlName="attack" type="range" min="0" max="100" [value]="attack">
+                <input type="range" min="0" max="100" class="bar" [style.width.%]="attack" />
+            </label>
+            <label class="slider">
+                <p class="value">Contra-ataque:  {{ counterattack }}</p> 
+                <input class="input -slider" formControlName="counterattack" type="range" min="0" max="100" [value]="counterattack">
+                <input type="range" min="0" max="100" class="bar" [style.width.%]="counterattack" />
+            </label>
+            <label class="slider">
+                <p class="value">Defesa:  {{ defense }}</p>
+                <input class="input -slider" formControlName="defense" type="range" min="0" max="100" [value]="defense">
+                <input type="range" min="0" max="100" class="bar" [style.width.%]="defense" />
+            </label>
+        </div>
+
+    </form>
+    
+    <div class="container-buttons">
+        <button 
+            [class.disabled]="teamsCompleted && form.get('teamName').errors"
+            (click)="addTeam()"
+            class="btn -dashbboard">Adicionar time</button>
+        <button
+            [class.disabled]="!teamsCompleted"
+            (click)="toTournament()"
+            class="btn -dashbboard">Iniciar torneio</button>
+        <button class="btn -dashbboard" (click)="reset()">Resetar campos</button>
+    </div>
+
+    <div class="list-teams">
+        <h1 class="registered-teams-title">Times cadastrados</h1>
+        <ul>
+            <li class="list-item" *ngFor="let team of teams; index as i">
+                <span class="position" *ngIf="team.name !== ''">{{ i + 1 }} &#186; </span>
+                <span *ngIf="team.name !== ''" class="name-team">{{ team.name }}</span>
+                <div *ngIf="team.name !== ''" class="options">
+                    <span (click)="selectTeam(i)" class="edit">editar</span>
+                    <span (click)="deleteTeam(i)" class="delete">excluir</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</main>

@@ -1,0 +1,21 @@
+<div class="container-tournament">
+    <div *ngFor="let round of rounds; let lastRound = last" class="round">
+        <div class="container-match" *ngIf="!lastRound">
+            <match
+                [match]="match"
+                (winner)="getWinner($event)"
+                *ngFor="let match of round">
+            </match>
+        </div>
+        <div class="round" *ngIf="lastRound && championTeam">
+            {{ championTeam }} é o campeão!!
+        </div>   
+    </div>
+</div>
+
+<div class="container-buttons">
+    <button (click)="resetGame()" class="btn -reset-game">Reiniciar o jogo</button>
+    <button (click)="exit()" class="btn -exit">Sair</button>
+</div>
+
+ 

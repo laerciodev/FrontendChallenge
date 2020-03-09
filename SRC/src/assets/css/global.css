@@ -1,0 +1,39 @@
+:root {
+    --font: 'Beaufort for LOL';
+    --red: #C44F4D;
+    --white: #FFF;
+}
+
+@font-face {
+    font-family: "Beaufort for LOL";
+    src: url("/assets/fonts/LOL-font.ttf")
+}
+
+body {
+    font-family: var(--font);
+    color: #937341;
+    background-color: #111;
+}
+
+
+*, ::before, ::after {
+    user-select: none;
+}
+
+.btn {
+    color: #937341;
+    border: none;
+    border: 3px solid #937341;
+    font-family: var(--font);
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    text-transform: uppercase;
+    z-index: 2;
+    background-color: transparent;
+}
+
+.btn:hover {
+    opacity: .5;
+}

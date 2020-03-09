@@ -1,0 +1,51 @@
+%vertical-align {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.container-tournament {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    background-color: transparent;
+    position: relative;
+    z-index: 2;
+}
+
+.container-match {
+    @extend %vertical-align;
+}
+
+.round {
+    @extend %vertical-align;
+}
+
+.match {
+    background-color: #FFF;
+    width: 300px;
+    height: 100px;
+    border-radius: 5px;
+    margin: 20px;
+    box-shadow: 0 2px 0 0 #e5e5e5;
+    position: relative;
+}
+
+.team-winner {
+    display: flex;
+    align-items: center;
+}
+
+.container-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+
+    .btn {
+        font-size: 14px;
+        margin: 10px;
+    }
+}
+
+

@@ -1,0 +1,27 @@
+<div class="container-match">
+    <div>
+        <p class="score">
+            <span class="name-team" *ngFor="let prop of match.teamA | keyvalue">{{ prop.key === 'name' ? prop.value : '' }}</span>
+            <span class="vs">vs</span>
+            <span class="name-team" *ngFor="let prop of match.teamB | keyvalue">{{ prop.key === 'name' ? prop.value : '' }}</span>
+        </p>
+        <table class="table-match">
+            <thead class="table-head">
+                <th>A</th>
+                <th>CA</th>
+                <th>D</th>
+                <th>F</th>
+                <th>Times</th>
+            </thead>
+            <tr class="table-row">
+                <td *ngFor="let prop of match.teamA | keyvalue" class="td">{{ prop.value }}</td>
+            </tr>
+            <tr class="table-row">
+                <td *ngFor="let prop of match.teamB | keyvalue" class="td">{{ prop.value }}</td>
+            </tr>
+        </table>
+    </div>
+    <button class="generate-winner" (click)="generateWinner(i)">
+        Play
+    </button>
+</div>
